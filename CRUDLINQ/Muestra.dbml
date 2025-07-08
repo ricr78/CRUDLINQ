@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Muestra2" Class="MuestraDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Departamentos" Member="Departamentos">
+    <Type Name="Departamentos">
+      <Column Name="idDept" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Departamento" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Ubicacion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="Departamentos_Empleados" Member="Empleados" ThisKey="idDept" OtherKey="idDept" Type="Empleados" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Empleados" Member="Empleados">
+    <Type Name="Empleados">
+      <Column Name="idEmp" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="idDept" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Departamentos_Empleados" Member="Departamentos" ThisKey="idDept" OtherKey="idDept" Type="Departamentos" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_loadD" Method="sp_loadD">
+    <ElementType Name="sp_loadDResult">
+      <Column Name="idDept" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Departamento" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Ubicacion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_loadE" Method="sp_loadE">
+    <ElementType Name="sp_loadEResult">
+      <Column Name="idEmp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="idDept" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_leer" Method="sp_leer">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_leerResult">
+      <Column Name="idEmp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="idDept" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_eliminarE" Method="sp_eliminarE">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_crearE" Method="sp_crearE">
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Genero" Parameter="genero" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Salario" Parameter="salario" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="idDept" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_buscarE" Method="sp_buscarE">
+    <Parameter Name="Criterio" Parameter="criterio" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="sp_buscarEResult">
+      <Column Name="idEmp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Genero" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="idDept" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_actualizarE" Method="sp_actualizarE">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Genero" Parameter="genero" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="Salario" Parameter="salario" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="idDept" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
