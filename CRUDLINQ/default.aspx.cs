@@ -47,6 +47,7 @@ namespace CRUDLINQ
             gvusuarios.DataBind();
             con.Close();
         }
+        // creamos un metedo void para la eliminacion del boton lo cual indica el indice que si es igual me lo elimine 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             string id;
