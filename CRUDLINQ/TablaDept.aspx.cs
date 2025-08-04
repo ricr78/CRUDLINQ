@@ -12,6 +12,7 @@ namespace CRUDLINQ
 {
     public partial class TablaDept : System.Web.UI.Page
     {
+    // metodo que permite llamar al metodo de conexion de base de datos
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -30,4 +31,5 @@ namespace CRUDLINQ
             Response.Redirect("TablaDept.aspx");
         }
     }
+
 }
