@@ -12,6 +12,7 @@ namespace CRUDLINQ
 {
     public partial class _default : System.Web.UI.Page
     {
+    //conexión a la base de datos
         readonly SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Muestra2ConnectionString"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -84,3 +85,4 @@ namespace CRUDLINQ
     }
     
 }
+
